@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple Calculator</title>
+  <style>
+    body {
+      background-color: chocolate;
+      font-family: Arial, sans-serif;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .calculator-container {
+      background: #fff8f0;
+      border-radius: 20px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+      padding: 30px;
+      min-width: 320px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    h2 {
+      color: #d2691e;
+      text-align: center;
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+    #display {
+      width: 90%;
+      height: 40px;
+      font-size: 24px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      border: 1px solid #d2691e;
+      padding: 8px;
+      text-align: right;
+      background: #fff;
+    }
+    .button-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 60px);
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    button {
+      height: 50px;
+      font-size: 22px;
+      border-radius: 8px;
+      border: none;
+      background: #d2691e;
+      color: white;
+      cursor: pointer;
+      transition: background 0.5s;
+    }
+    button:hover {
+      background: #a0522d;
+    }
+    #result {
+      font-size: 26px;
+      color: #d2691e;
+      margin-top: 10px;
+      text-align: center;
+      min-height: 32px;
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator-container">
+    <h2>Calculator</h2>
+    <input type="text" id="display">
+    <div class="button-grid">
+    <button onclick="clearDisplay('AC')">AC</button>
+     <button onclick="deleteLast('DE')">DE</button>
+    <button onclick="appendToDisplay('%')">%</button>  
+<button onclick="appendToDisplay('/')">/</button>
+<button onclick="appendToDisplay('7')">7</button>
+<button onclick="appendToDisplay('8')">8</button>
+<button onclick="appendToDisplay('9')">9</button>
+<button onclick="appendToDisplay('*')">*</button>
+<button onclick="appendToDisplay('4')">4</button>
+<button onclick="appendToDisplay('5')">5</button>
+<button onclick="appendToDisplay('6')">6</button>
+<button onclick="appendToDisplay('-')">-</button>
+<button onclick="appendToDisplay('1')">1</button>
+<button onclick="appendToDisplay('2')">2</button>
+<button onclick="appendToDisplay('3')">3</button>
+<button onclick="appendToDisplay('+')">+</button>
+<button onclick="appendToDisplay('00')">00</button>
+<button onclick="appendToDisplay('0')">0</button>
+<button onclick="calculateResult()">=</button>
+<button onclick="appendToDisplay('.')">.</button>
+    </div>
+    <div id="result"></div>
+<script>
+const display = document.getElementById("display");
+const result = document.getElementById("result"); // Optional if you have a result element
+
+// Append value to input
+function appendToDisplay(value) {
+  display.value += value;
+}
+
+// Clear input and result
+function clearDisplay() {
+  display.value = '';
+  if(result) result.innerText = '';
+}
+
+// Delete last character
+function deleteLast() {
+  display.value = display.value.slice(0, -1);
+}
+
+// Calculate result with try...catch
+function calculateResult() {
+  try {
+    let res = eval(display.value); // evaluate input
+    display.value = res;
+  } catch (error) {
+    display.value = "Error"; // visible error for screenshot
+  }
+}
+</script>
