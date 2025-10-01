@@ -12,13 +12,23 @@ app.use(express.static("public"));
 // one endpoint for all operations
 app.post("/calculate", (req, res) => {
   try {
-    const { expression } = req.body; // get expression from frontend
-    const result = math.evaluate(expression); // math.js evaluates safely
+    const { expression } = req.body;
+
+    // 📝 log the request
+    console.log(`Received calculation request: ${expression}`);
+
+    const result = math.evaluate(expression);
+
+    // 📝 log the result
+    console.log(`Result: ${result}`);
+
     res.json({ result });
   } catch (err) {
+    console.error("Error evaluating expression:", err.message);
     res.json({ error: "Invalid Expression" });
   }
 });
+
 
 // start server
 app.listen(PORT, () => {
