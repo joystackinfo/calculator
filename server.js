@@ -22,6 +22,6 @@ app.post("/calculate", (req, res) => {
 
 // start server
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`calculator running on http://localhost:${PORT}`);
 });
 

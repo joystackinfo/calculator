@@ -97,14 +97,14 @@
     <div id="result"></div>
 <script>
 const display = document.getElementById("display");
-const result = document.getElementById("result"); // Optional if you have a result element
+const result = document.getElementById("result"); 
 
 // Append value to input
 function appendToDisplay(value) {
   display.value += value;
 }
 
-// Clear input and result
+// Clear input
 function clearDisplay() {
   display.value = '';
   if(result) result.innerText = '';
@@ -115,16 +115,32 @@ function deleteLast() {
   display.value = display.value.slice(0, -1);
 }
 
-// Calculate result with try...catch
+// Calculate result using backend
 function calculateResult() {
-  try {
-    let res = eval(display.value); // evaluate input
-    display.value = res;
-  } catch (error) {
-    display.value = "Error"; // visible error for screenshot
-  }
+  const expression = display.value;
+
+  fetch("/calculate", { // send to backend
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ expression })
+  })
+  .then(response => response.json()) // parse JSON response
+  .then(data => {
+    if (data.result !== undefined) {
+      display.value = data.result; // show answer in input
+    } else {
+      display.value = "Error"; // show error if invalid
+    }
+  })
+  .catch(err => {
+    console.error(err);
+    display.value = "Error";
+  });
 }
 </script>
+
     </div>
 </body>
 </html>
