@@ -16,7 +16,7 @@ app.post("/calculate", (req, res) => {
     // 📝 log the request
     console.log(`Received calculation request: ${expression}`);
 
-    const result = math.evaluate(expression);
+    const result = math.evaluate(expression); // evaluate the math expression sent by the client and stores the result.
 
     
     // 📝 log the result
