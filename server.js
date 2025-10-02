@@ -11,7 +11,7 @@ app.use(express.static("public"));
 // one endpoint for all operations
 app.post("/calculate", (req, res) => {
   try {
-    const { expression } = req.body;
+    const { expression } = req.body; //pull the expreesion property from the req.boby and stote it in a variable called expression
 
     // 📝 log the request
     console.log(`Received calculation request: ${expression}`);
