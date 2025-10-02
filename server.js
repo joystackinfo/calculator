@@ -6,7 +6,6 @@ const PORT = 3000;
 // middleware
 app.use(express.json());
 
-// serve frontend files from public/
 app.use(express.static("public"));
 
 // one endpoint for all operations
@@ -19,6 +18,7 @@ app.post("/calculate", (req, res) => {
 
     const result = math.evaluate(expression);
 
+    
     // 📝 log the result
     console.log(`Result: ${result}`);
 
@@ -28,6 +28,8 @@ app.post("/calculate", (req, res) => {
     res.json({ error: "Invalid Expression" });
   }
 });
+
+
 
 
 // start server
