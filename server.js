@@ -34,12 +34,14 @@ app.post("/calculate", (req, res) => {
 app.post("/calculate/add", (req , res) => {
   const {a ,b} = req.body
 const result = (a + b)
+console.log(`Adding: ${a} + ${b} = ${result}`);
 res.json({result})
 });  
 //subtraction
 app.post("/calculate/subtract", (req , res) => {
   const {a ,b} = req.body
 const result = (a - b)
+console.log(`Subtracting: ${a} - ${b} = ${result}`);
 res.json({result})
 });  
  
@@ -47,6 +49,7 @@ res.json({result})
 app.post("/calculate/multiply", (req , res) => {
   const {a ,b} = req.body
 const result = (a * b)
+console.log(`Multiplying: ${a} * ${b} = ${result}`); // logs the operation
 res.json({result})
 });  
 
@@ -54,15 +57,18 @@ res.json({result})
 app.post("/calculate/divide", (req , res) => {
   const {a ,b} = req.body
 const result = (a / b)
+console.log(`Dividing: ${a} / ${b} = ${result}`); // logs the operation
+//Handle division by zero
 if (b === 0) {
-  res.status(400)
+  res.status(400);
+  console.log(`Dividing: ${a} / ${b} = Error: cannot divide by zero`);
   res.json({msg: `cannot divide by zero ,please provide a valid denominator`}) //log an error message
   return;
-};
-
+}
 res.json({result});
 
 });
+
   //start server
 app.listen(PORT, () => {
   console.log(`calculator is running on http://localhost:${PORT}`);
