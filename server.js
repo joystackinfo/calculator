@@ -43,6 +43,26 @@ const result = (a - b)
 res.json({result})
 });  
  
+//multiplication
+app.post("/calculate/multiply", (req , res) => {
+  const {a ,b} = req.body
+const result = (a * b)
+res.json({result})
+});  
+ 
+//Division
+app.post("/calculate/divide", (req , res) => {
+  const {a ,b} = req.body
+const result = (a / b)
+if (b === 0) {
+  res.status(400)
+  res.json({msg: `cannot divide by zero ,please provide a valid denominator`}) //log an error message
+  return;
+}
+
+res.json({result});
+
+});  
 // start server
 app.listen(PORT, () => {
   console.log(`calculator running on http://localhost:${PORT}`);
