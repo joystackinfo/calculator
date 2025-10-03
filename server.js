@@ -49,7 +49,7 @@ app.post("/calculate/multiply", (req , res) => {
 const result = (a * b)
 res.json({result})
 });  
- 
+
 //Division
 app.post("/calculate/divide", (req , res) => {
   const {a ,b} = req.body
