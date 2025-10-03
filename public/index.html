@@ -119,14 +119,14 @@ function deleteLast() {
 function calculateResult() {
   const expression = display.value;
 
-  fetch("/calculate", { // send to backend
+  fetch("/calculate", { // sends a request to the backend
     method: "POST",
     headers: {
       "Content-Type": "application/json"
     },
-    body: JSON.stringify({ expression })
+    body: JSON.stringify({ expression }) // sends the expression to backend and turn it into json string
   })
-  .then(response => response.json()) // parse JSON response
+  .then(response => response.json()) //turns response into json
   .then(data => {
     if (data.result !== undefined) {
       display.value = data.result; // show answer in input

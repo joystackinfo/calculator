@@ -29,9 +29,20 @@ app.post("/calculate", (req, res) => {
   }
 });
 
-
-
-
+//multiple endpoints for each operation
+//addition
+app.post("/calculate/add", (req , res) => {
+  const {a ,b} = req.body
+const result = (a + b)
+res.json({result})
+});  
+//subtraction
+app.post("/calculate/subtract", (req , res) => {
+  const {a ,b} = req.body
+const result = (a - b)
+res.json({result})
+});  
+ 
 // start server
 app.listen(PORT, () => {
   console.log(`calculator running on http://localhost:${PORT}`);
