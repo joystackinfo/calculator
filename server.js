@@ -53,7 +53,7 @@ console.log(`Multiplying: ${a} * ${b} = ${result}`); // logs the operation
 res.json({result})
 });  
 
-//Division
+//division
 app.post("/calculate/divide", (req , res) => {
   const {a ,b} = req.body
 const result = (a / b)
