@@ -119,7 +119,7 @@ function deleteLast() {
 function calculateResult() {
   const expression = display.value;
 
-  fetch("/calculate", { // sends a request to the backend
+  fetch("/calculate", { // sends a request to the backend in json format
     method: "POST",
     headers: {
       "Content-Type": "application/json"
