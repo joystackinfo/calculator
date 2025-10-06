@@ -35,7 +35,7 @@ app.post("/calculate", (req, res) => {
 app.post("/calculate/add", (req , res) => {
   const {a ,b} = req.body
 const result = (a + b)
-console.log(`Adding: ${a} + ${b} = ${result}`);
+console.log(`Adding: ${a} + ${b} = ${result}`); // logs the operation
 res.json({result})
 });  
 //subtraction
