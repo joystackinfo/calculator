@@ -19,8 +19,9 @@ app.post("/calculate", (req, res) => {
     const result = math.evaluate(expression); // evaluate the math expression sent by the client and stores the result.
 
     
-    // 📝 log the result
-    console.log(`Result: ${result}`);
+    
+    console.log(`Result: ${result}`); // log the result to the console
+  
 
     res.json({ result });
   } catch (err) {
